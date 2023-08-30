@@ -18,7 +18,7 @@ model Usuario {
   cpf             String  @unique @db.VarChar(12)
   ativo           Boolean @default(false)
   usuario_tipo_id Int     @db.Int
-  hash_registro   String  @db.VarChar(45)
+  hash_registro   String? @db.VarChar(45)
 
   usuariotipo UsuarioTipo @relation(fields: [usuario_tipo_id], references: [id], map: "usuario_usuariotipoid_fkey")
 }

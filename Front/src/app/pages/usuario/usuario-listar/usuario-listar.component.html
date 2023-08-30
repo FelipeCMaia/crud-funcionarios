@@ -23,20 +23,20 @@
         <th>Email</th>
         <th>Status</th>
         <th>Alterar</th>
-        <th>Hab/Des</th>
       </thead>
 
-      <body>
-        <tr>
-          <td>João</td>
-          <td>joao.hotmail</td>
-          <td>ativo</td>
+      <tbody>
+        <tr *ngFor="let user of usuarios">
+          <td>{{user.nome}}</td>
+          <td>{{user.email}}</td>
+          <td>{{user.ativo}}</td>
           <td>
-            <link rel="stylesheet" href="">Alterar
+            <a [routerLink]="'/usuario-editar/' + user.id">
+              alterar
+            </a>
           </td>
-          <td>desabilitado</td>
         </tr>
-      </body>
+      </tbody>
     </table>
   </div>
 </main>

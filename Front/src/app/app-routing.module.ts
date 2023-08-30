@@ -19,6 +19,10 @@ const routes: Routes = [
     component: UsuarioListarComponent,
   },
   {
+    path: 'usuario-editar/:id',
+    component: UsuarioEditarComponent,
+  },
+  {
     path: 'usuario-editar',
     component: UsuarioEditarComponent,
   },

@@ -3,20 +3,38 @@
 </header>
 <main>
   <div class="cima">
-    <label for="campo1">Campo 1: </label>
-    <input type="text" id="campo1">
+    <label for="campo1">Nome: </label>
+    <br>
+    <input type="text" id="campo1" [(ngModel)]="usuario.nome" />
   </div>
   <div class="baixo">
-    <label for="campo2">Campo 2: </label>
-    <input type="text" id="campo2">
+    <label for="campo2">Email: </label>
+    <br>
+    <input type="text" id="campo2" [(ngModel)]="usuario.nome">
   </div>
-  <button id="button" type="button" onclick="Evento()">Ok</button>
+  <div class="baixo">
+    <label for="campo2">Senha 2: </label>
+    <br>
+    <input type="password" id="campo2" [(ngModel)]="usuario.nome">
+  </div>
+  <div class="baixo">
+    <label for="campo2">Confirmar Senha 2: </label>
+    <input type="password" id="campo2" [(ngModel)]="usuario.nome">
+  </div>
+
+  <div class="baixo">
+    <label for="campo2">Ativo: </label>
+    <br>
+    <input type="checkbox" id="campo2" [(ngModel)]="usuario.nome">
+  </div>
+
+  <button id="button" type="button" (click)="gravar()">Ok</button>
   <script>
     function Evento() {
       alert('evento funcionando')
     }
   </script>
-  <button id="button" type="button" onclick="Evento()">Cancelar</button>
+  <button id="button" type="button">Cancelar</button>
   <script>
     function Evento() {
       alert('evento funcionando')

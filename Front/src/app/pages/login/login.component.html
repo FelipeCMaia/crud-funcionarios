@@ -3,12 +3,12 @@
 
     <h1>Faça seu Login</h1>
 
-    <input type="email" placeholder="Digite seu E-mail" autofocus="true">
-    <input type="password" placeholder="Digite sua Senha">
+    <input type="email" name="email" id="email" placeholder="Digite seu E-mail" [(ngModel)]="email">
+    <input type="password" name="password" id="password" placeholder="Digite sua Senha" [(ngModel)]="senha">
 
     <a href="#">Esqueci minha senha...</a>
 
-    <input type="submit" value="Entrar" class="btn">
+    <input type="button" value="Entrar" class="btn" (click)="login()">
   </form>
 
 </div>

@@ -7,6 +7,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { MenuComponent } from './shared/components/menu/menu.component';
 import { UsuarioListarComponent } from './pages/usuario/usuario-listar/usuario-listar.component';
 import { UsuarioEditarComponent } from './pages/usuario/usuario-editar/usuario-editar.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { UsuarioEditarComponent } from './pages/usuario/usuario-editar/usuario-e
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
