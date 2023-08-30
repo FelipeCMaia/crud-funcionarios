@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Usuario</title>
+    <link rel="stylesheet" href="/css/lista-style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1 id="titulo">Lista de Usuários</h1>
+    </header>
+
+    <main>
+        <div class="produto">
+            <h2>Produtos</h2>
+        </div>
+        <div class="card">
+            <label for="procurar"></label>
+            <input type="text" id="procurar" placeholder="Nome do Produto">
+            <button id="button" type="button" onclick="Evento()">Procurar</button>
+            <script>
+                function Evento() {
+                    alert('evento funcionando')
+                }
+            </script>
+        </div>
+        <div class="tabela">
+            <table border="1">
+                <thead>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Status</th>
+                    <th>Alterar</th>
+                    <th>Hab/Des</th>
+                </thead>
+
+                <body>
+                    <tr>
+                        <td>João</td>
+                        <td>joao.hotmail</td>
+                        <td>ativo</td>
+                        <td>
+                            <link rel="stylesheet" href="">Alterar
+                        </td>
+                        <td>desabilitado</td>
+                    </tr>
+                </body>
+            </table>
+        </div>
+    </main>
+</body>
+
+</html>
