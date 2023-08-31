@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UsuarioService } from 'src/app/shared/services/usuario.service';
 
 @Component({
@@ -8,25 +8,53 @@ import { UsuarioService } from 'src/app/shared/services/usuario.service';
   styleUrls: ['./usuario-editar.component.css']
 })
 export class UsuarioEditarComponent implements OnInit {
-  usuario: any = {};
+  usuario: any = {
+    usuario_tipo_id: null,
+  };
 
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    this.idRegistro = this.activatedRouter.snapshot.paramMap.get('id')
+
+    if(this.idRegistro) {
+      this.carregar();
+    }
   }
 
   constructor(
     private usuarioservice: UsuarioService,
     private router: Router,
+    private activatedRouter: ActivatedRoute,
     ) {}
+
+  idRegistro: string | null;
 
   async gravar() {
     try {
-      await this.usuarioservice.cadastrar(this.usuario);
+      delete this.usuario.confirmarSenha;
 
-      this.router.navigate(['usuairo-listar'])
+      if(this.idRegistro) {
+        await this.usuarioservice.atualizar(this.usuario);
+      } else {
+        await this.usuarioservice.cadastrar(this.usuario);
+      }
+
+      this.router.navigate(['usuario-listar'])
     } catch (error) {
       alert('erro ao gravar o usuario');
     }
+  }
 
+  cancelar() {
+    this.router.navigate(['usuario-listar']);
+  }
+
+  async carregar() {
+    const { data } = await this.usuarioservice.carregar(this.idRegistro!);
+
+    this.usuario = data;
+
+    this.usuario.senha = null;
+
+    return;
   }
 }

@@ -30,4 +30,8 @@ export class UsuarioListarComponent implements OnInit {
     }
 
   }
+
+  novo() {
+    this.router.navigate(['usuario-editar'])
+  }
 }

@@ -36,16 +36,3 @@ main{
 .tabela{
   margin-top: 15px;
 }
-table{
-  border-collapse: collapse;
-  border: 1px solid #ccc;
-  width: 100%;
-}
-table th{
-  background-color: #DCDCDC;
-  text-align: center;
-}
-table td{
-  padding: 1px 5px;
-  text-align: center;
-}

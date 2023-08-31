@@ -1,5 +1,4 @@
 import { Router } from "express";
-import { AutenticacaoService } from "../services/autenticacao.service";
 import { UsuarioService } from "../services/usuario.service";
 
 export const usuarioRoutes = Router();

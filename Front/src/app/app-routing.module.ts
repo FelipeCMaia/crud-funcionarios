@@ -7,7 +7,7 @@ import { MenuComponent } from './shared/components/menu/menu.component';
 
 const routes: Routes = [
   {
-    path: 'login',
+    path: '',
     component: LoginComponent,
   },
   {
