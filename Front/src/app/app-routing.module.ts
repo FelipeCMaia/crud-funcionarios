@@ -4,6 +4,9 @@ import { LoginComponent } from './pages/login/login.component';
 import { UsuarioListarComponent } from './pages/usuario/usuario-listar/usuario-listar.component';
 import { UsuarioEditarComponent } from './pages/usuario/usuario-editar/usuario-editar.component';
 import { MenuComponent } from './shared/components/menu/menu.component';
+import { ProdutoListarComponent } from './pages/produto/produto-listar/produto-listar.component';
+import { ProdutoEditarComponent } from './pages/produto/produto-editar/produto-editar.component';
+import { ProdutoVisualizarComponent } from './pages/produto/produto-visualizar/produto-visualizar.component';
 
 const routes: Routes = [
   {
@@ -25,6 +28,22 @@ const routes: Routes = [
   {
     path: 'usuario-editar',
     component: UsuarioEditarComponent,
+  },
+  {
+    path: 'produto-listar',
+    component: ProdutoListarComponent,
+  },
+  {
+    path: 'produto-editar/:id',
+    component: ProdutoEditarComponent,
+  },
+  {
+    path: 'produto-editar',
+    component: ProdutoEditarComponent,
+  },
+  {
+    path: 'produto-visualizar/:id',
+    component: ProdutoVisualizarComponent,
   },
 ];
 
