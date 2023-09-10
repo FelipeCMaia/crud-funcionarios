@@ -20,8 +20,8 @@ export class UsuarioService {
     return this.axiosInstance.get('usuario/' + id);
   }
 
-  listar() {
-    return this.axiosInstance.get('usuario');
+  listar(filtros: any) {
+    return this.axiosInstance.post('usuario/pesquisar', filtros);
   }
 
   cadastrar(registro: any) {

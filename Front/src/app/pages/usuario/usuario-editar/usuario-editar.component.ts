@@ -10,6 +10,7 @@ import { UsuarioService } from 'src/app/shared/services/usuario.service';
 export class UsuarioEditarComponent implements OnInit {
   usuario: any = {
     usuario_tipo_id: null,
+    ativo: true,
   };
 
   ngOnInit(): void {
@@ -24,7 +25,7 @@ export class UsuarioEditarComponent implements OnInit {
     private usuarioservice: UsuarioService,
     private router: Router,
     private activatedRouter: ActivatedRoute,
-    ) {}
+  ) {}
 
   idRegistro: string | null;
 

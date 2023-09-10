@@ -5,8 +5,8 @@ export const usuarioRoutes = Router();
 
 const usuarioService = new UsuarioService();
 
-usuarioRoutes.get('/', async (req, res) => {
-  const filtros = req.query;
+usuarioRoutes.post('/pesquisar', async (req, res) => {
+  const filtros = req.body;
 
   return res.json(await usuarioService.pesquisar(filtros));
 });
@@ -23,7 +23,7 @@ usuarioRoutes.post('/', async (req, res) => {
   return res.json(await usuarioService.gravar(registro));
 });
 
-usuarioRoutes.put('/', async (req, res) => {  
+usuarioRoutes.put('/', async (req, res) => {
   const registro = req.body;
 
   return res.json(await usuarioService.atualizar(registro))

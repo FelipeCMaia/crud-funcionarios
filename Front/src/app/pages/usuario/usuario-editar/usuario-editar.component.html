@@ -18,7 +18,7 @@
     <input type="text" class="form-control form-control-sm" [(ngModel)]="usuario.email" [disabled]="!!idRegistro">
   </div>
   <div class="baixo">
-    <label for="campo2">Senha 2: </label>
+    <label for="campo2">Senha: </label>
     <br>
     <input type="password" class="form-control form-control-sm" [(ngModel)]="usuario.senha">
   </div>
@@ -34,12 +34,6 @@
       <option [ngValue]="1">Admin</option>
       <option [ngValue]="2">Estoquista</option>
     </select>
-  </div>
-
-  <div class="baixo">
-    <label for="ativo">Ativo: </label>
-    <br>
-    <input id="ativo" type="checkbox" [(ngModel)]="usuario.ativo">
   </div>
 
   <div class="mt-3 mb-2">

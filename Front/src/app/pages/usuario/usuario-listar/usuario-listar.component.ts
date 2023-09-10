@@ -14,15 +14,17 @@ export class UsuarioListarComponent implements OnInit {
     ) {}
 
   ngOnInit(): void {
-    this.listar();
+    this.pesquisar();
   }
+
+  filtros: any = {};
 
   usuarios: any = [];
 
 
-  async listar() {
+  async pesquisar() {
     try {
-      const { data } = await this.usuarioservice.listar();
+      const { data } = await this.usuarioservice.listar(this.filtros);
 
       this.usuarios = data
     } catch (error) {

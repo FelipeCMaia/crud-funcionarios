@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Utilitarios } from 'src/app/shared/classes/utilitarios';
 import { UsuarioService } from 'src/app/shared/services/usuario.service';
 
 @Component({
@@ -16,7 +17,9 @@ export class LoginComponent implements OnInit {
 
   async login() {
     try {
-      await this.usuarioservice.login(this.email, this.senha);
+      const { data } = await this.usuarioservice.login(this.email, this.senha);
+
+      Utilitarios.gravarUsuarioTipo(data.usuario.usuario_tipo_id.toString());
 
       this.router.navigate(['menu'])
 
