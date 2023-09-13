@@ -1,15 +1,54 @@
 <div class="container">
   <div class="card mt-5">
-    <div class="card-header">
-      Produto
-    </div>
 
     <div class="card-body">
+      <div class="row">
+        <div class="col-lg-6">
 
-    </div>
+          <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="https://m.media-amazon.com/images/I/61wasco9tjL.__AC_SX300_SY300_QL70_ML2_.jpg" class="d-block" style="height:250px">
+              </div>
+              <div class="carousel-item">
+                <img src="https://m.media-amazon.com/images/I/61wasco9tjL.__AC_SX300_SY300_QL70_ML2_.jpg" class="d-block" style="height:250px">
+              </div>
+              <div class="carousel-item">
+                <img src="https://m.media-amazon.com/images/I/61xhcg6FbfL._AC_SL1172_.jpg" class="d-block" style="height:250px">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
 
-    <div class="card-footer">
+        </div>
 
+        <div class="col-lg-6">
+          <h3>{{produto.nome}}</h3>
+          <p>{{produto.descricao}}</p>
+          <p>{{produto.valor | currency:'BRL':true}}</p>
+
+          <br>
+
+          <p>Avaliação: {{produto.avaliacao}}</p>
+
+          <br>
+
+          <button class="btn btn-primary" disabled>Comprar</button>
+
+        </div>
+      </div>
     </div>
   </div>
 </div>

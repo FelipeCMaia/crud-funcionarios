@@ -1,0 +1,8 @@
+.carousel {
+  border: 1px solid #0d6efd;
+  border-radius: 5px;
+}
+
+.carousel-item img {
+  margin: auto;
+}

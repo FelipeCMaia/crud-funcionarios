@@ -3,16 +3,14 @@ import { ProdutoService } from "../services/produto.service";
 import multer from 'multer';
 
 const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
+  destination: function (req: any, file: any, cb: any) {
     const { id } = req.params;
 
     const path = `${process.env.CAMINHO_IMAGEM!}${id}/`
 
-    console.log('sei la')
-
     cb(null, path)
   },
-  filename: function (req, file, cb) {
+  filename: function (req: any, file: any, cb: any) {
     const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
 
     console.log(uniqueSuffix)

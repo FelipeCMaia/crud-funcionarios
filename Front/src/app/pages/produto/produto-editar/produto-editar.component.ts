@@ -11,7 +11,7 @@ export class Arquivo {
   }
 
   url: string;
-  file: any;
+  file: File;
   imagemPadrao: boolean;
 }
 
@@ -37,7 +37,7 @@ export class ProdutoEditarComponent {
     }
   }
 
-  EUsuarioTipo = UsuarioTipo;
+
 
   @ViewChild('fileInput')
   fileInput: ElementRef;
@@ -49,6 +49,8 @@ export class ProdutoEditarComponent {
   fileList: Arquivo[] = [];
 
   idRegistro: string | null;
+
+  EUsuarioTipo = UsuarioTipo;
 
   usuarioTipo = Utilitarios.obterUsuarioTipo();
 
@@ -63,8 +65,6 @@ export class ProdutoEditarComponent {
   inputImagemSelecionado(event: Event) {
     const files = (event.target as HTMLInputElement).files;
 
-    console.log(files)
-
     if(!files) {
       this.toastr.error('Sem arquivos encontrados')
       return;
@@ -75,9 +75,6 @@ export class ProdutoEditarComponent {
 
       reader.readAsDataURL(files[i]);
       reader.onload = (event: any) => {
-
-        console.log(files[i]);
-
         this.fileList.push({
           file: files[i],
           imagemPadrao: false,
@@ -86,7 +83,8 @@ export class ProdutoEditarComponent {
       }
     }
 
-    //this.fileInput.nativeElement.value = '';
+    this.fileInput.nativeElement.value = '';
+    this.fileInput.nativeElement.reset();
   }
 
   imagemPadraoMudar(ii: number) {
@@ -111,9 +109,7 @@ export class ProdutoEditarComponent {
         await this.produtoService.cadastrar(this.produto);
       }
 
-      await this.uploadArquivos();
-
-      //this.router.navigate(['produto-listar'])
+      this.router.navigate(['produto-listar'])
     } catch (error) {
       alert('erro ao gravar o produto');
     }
@@ -133,17 +129,5 @@ export class ProdutoEditarComponent {
 
   campoLiberado() {
     return this.usuarioTipo !== this.EUsuarioTipo.Admin;
-  }
-
-  async uploadArquivos() {
-    const formData = new FormData();
-
-    this.fileList.forEach((fl, index) => {
-      formData.append('file-'+ index, fl.file);
-    });
-
-    console.log(formData)
-
-    await this.produtoService.uploadImagem(this.idRegistro!, formData);
   }
 }
