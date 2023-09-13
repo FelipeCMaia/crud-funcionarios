@@ -79,4 +79,16 @@ export class ProdutoService {
 
     this.atualizar(produto);
   }
+
+  async gravarImagens(imagens: string[], produto_id: number) {
+    for(let img of imagens) {
+      await prisma.produtoAnexo.create({
+        data: {
+          caminho: img,
+          principal: false,
+          produto_id,
+        }
+      })
+    }
+  }
 }

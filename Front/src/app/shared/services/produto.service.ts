@@ -35,4 +35,8 @@ export class ProdutoService {
   alterarStatus(id: string) {
     return this.axiosInstance.post('produto/alterar-status/' + id);
   }
+
+  uploadImagem(id: string, formData: any) {
+    return this.axiosInstance.post('produto/gravar-imagens/' + id, formData);
+  }
 }

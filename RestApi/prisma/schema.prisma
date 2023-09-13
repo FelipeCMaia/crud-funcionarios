@@ -38,4 +38,15 @@ model Produto {
   status     Boolean @db.TinyInt
   avaliacao  String  @db.VarChar(5)
   quantidade Int?    @db.Int()
+
+  ProdutoAnexo ProdutoAnexo[]
+}
+
+model ProdutoAnexo {
+  id         Int     @id @default(autoincrement())
+  caminho    String  @db.VarChar(500)
+  principal  Boolean @db.TinyInt
+  produto_id Int     @db.Int
+
+  produto Produto @relation(fields: [produto_id], references: [id], map: "produto_produto_anexo_id_fkey")
 }

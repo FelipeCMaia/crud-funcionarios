@@ -23,7 +23,7 @@ export class ProdutoListarComponent implements OnInit {
 
   filtros: any = {};
 
-  produtos: any = [];
+  produtos: any[] = [];
 
   EUsuarioTipo = UsuarioTipo;
 
@@ -45,6 +45,10 @@ export class ProdutoListarComponent implements OnInit {
   }
 
   async alterarStatus(id: string) {
+
+    const { value } = await Utilitarios.ConfirmaAcao('Alterar Status', 'Deseja realmente alterar o status deste produto?', 'warning', true, 'Sim', 'Não');
+
+    if(!value) return;
 
     this.spinner.show();
       await this.produtoservice.alterarStatus(id);

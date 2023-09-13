@@ -11,7 +11,7 @@ export class Arquivo {
   }
 
   url: string;
-  file: File;
+  file: any;
   imagemPadrao: boolean;
 }
 
@@ -63,6 +63,8 @@ export class ProdutoEditarComponent {
   inputImagemSelecionado(event: Event) {
     const files = (event.target as HTMLInputElement).files;
 
+    console.log(files)
+
     if(!files) {
       this.toastr.error('Sem arquivos encontrados')
       return;
@@ -73,6 +75,9 @@ export class ProdutoEditarComponent {
 
       reader.readAsDataURL(files[i]);
       reader.onload = (event: any) => {
+
+        console.log(files[i]);
+
         this.fileList.push({
           file: files[i],
           imagemPadrao: false,
@@ -81,8 +86,7 @@ export class ProdutoEditarComponent {
       }
     }
 
-    this.fileInput.nativeElement.value = '';
-    this.fileInput.nativeElement.reset();
+    //this.fileInput.nativeElement.value = '';
   }
 
   imagemPadraoMudar(ii: number) {
@@ -107,7 +111,9 @@ export class ProdutoEditarComponent {
         await this.produtoService.cadastrar(this.produto);
       }
 
-      this.router.navigate(['produto-listar'])
+      await this.uploadArquivos();
+
+      //this.router.navigate(['produto-listar'])
     } catch (error) {
       alert('erro ao gravar o produto');
     }
@@ -127,5 +133,17 @@ export class ProdutoEditarComponent {
 
   campoLiberado() {
     return this.usuarioTipo !== this.EUsuarioTipo.Admin;
+  }
+
+  async uploadArquivos() {
+    const formData = new FormData();
+
+    this.fileList.forEach((fl, index) => {
+      formData.append('file-'+ index, fl.file);
+    });
+
+    console.log(formData)
+
+    await this.produtoService.uploadImagem(this.idRegistro!, formData);
   }
 }
