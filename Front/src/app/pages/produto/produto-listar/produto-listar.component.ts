@@ -31,7 +31,7 @@ export class ProdutoListarComponent implements OnInit {
 
   async pesquisar() {
     try {
-      const { data } = await this.produtoservice.listar(this.filtros);
+      const { data } = await this.produtoservice.pesquisar(this.filtros);
 
       this.produtos = data
     } catch (error) {

@@ -16,8 +16,12 @@ export class ProdutoService {
     return this.axiosInstance.get('produto/' + id);
   }
 
-  listar(filtros: any) {
+  pesquisar(filtros: any) {
     return this.axiosInstance.post('produto/pesquisar', filtros);
+  }
+
+  listarLoja() {
+    return this.axiosInstance.get('produto/listar-loja');
   }
 
   cadastrar(registro: any) {
@@ -36,8 +40,8 @@ export class ProdutoService {
     return this.axiosInstance.post('produto/alterar-status/' + id);
   }
 
-  uploadImagem(id: string, formData: any) {
-    return this.axiosInstance.post('produto/gravar-imagens/' + id, formData, {
+  uploadImagem(id: string, formData: any, principal: number) {
+    return this.axiosInstance.post(`produto/gravar-imagens/${id}/${principal}`, formData, {
       headers: {
         "Content-Type": 'multipart/form-data',
       }

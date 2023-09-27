@@ -37,6 +37,12 @@ produtoRoutes.post('/pesquisar', async (req, res) => {
   return res.json(await produtoService.pesquisar(filtros));
 });
 
+produtoRoutes.get('/listar-loja', async (req, res) => {
+  const filtros = req.body;
+
+  return res.json(await produtoService.pesquisarLoja());
+});
+
 produtoRoutes.get('/:id', async (req, res) => {
   const { id } = req.params;
 
@@ -69,10 +75,10 @@ produtoRoutes.post('/alterar-status/:id', async (req, res) => {
   return res.json(await produtoService.alterarStatus(+id));
 })
 
-produtoRoutes.post('/gravar-imagens/:id', upload.single('file'), async (req, res) => {
-  const { id } = req.params;
+produtoRoutes.post('/gravar-imagens/:id/:principal', upload.single('file'), async (req, res) => {
+  const { id, principal } = req.params;
 
-  await produtoService.gravarImagens(req.file!.filename, +id);
+  await produtoService.gravarImagens(req.file!.filename, +id, +principal);
 
   return res.json('OK');
 })

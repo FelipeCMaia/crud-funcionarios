@@ -7,6 +7,8 @@ import { MenuComponent } from './shared/components/menu/menu.component';
 import { ProdutoListarComponent } from './pages/produto/produto-listar/produto-listar.component';
 import { ProdutoEditarComponent } from './pages/produto/produto-editar/produto-editar.component';
 import { ProdutoVisualizarComponent } from './pages/produto/produto-visualizar/produto-visualizar.component';
+import { MenuLojaComponent } from './shared/components/menu-loja/menu-loja.component';
+import { ProdutoListarLojaComponent } from './pages/produto/produto-listar-loja/produto-listar-loja.component';
 
 const routes: Routes = [
   {
@@ -45,6 +47,20 @@ const routes: Routes = [
     path: 'produto-visualizar/:id',
     component: ProdutoVisualizarComponent,
   },
+  {
+    path: 'loja',
+    component: MenuLojaComponent,
+    children: [
+      {
+        path: 'produtos',
+        component: ProdutoListarLojaComponent
+      },
+      {
+        path: 'produto/:id',
+        component: ProdutoVisualizarComponent
+      },
+    ]
+  }
 ];
 
 @NgModule({

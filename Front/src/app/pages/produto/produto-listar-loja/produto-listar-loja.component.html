@@ -1,1 +1,10 @@
-<p>produto-listar-loja works!</p>
+<main>
+  <div class="product" *ngFor="let prod of produtos">
+      <img [src]="prod.caminho" alt="Nome do Produto" style="width: 100%; max-height: 230px;">
+      <h1>{{prod.nome}}</h1>
+      <p class="price">Preço: {{prod.valor | currency:'BRL':true}}</p>
+      <button class="buy-button" (click)="navegarProduto(prod.id)">
+        Comprar Agora
+      </button>
+  </div>
+</main>

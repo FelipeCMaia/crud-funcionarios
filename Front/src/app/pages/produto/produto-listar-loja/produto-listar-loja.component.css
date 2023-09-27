@@ -1,0 +1,111 @@
+/* Reset padrão para limpar margens e preenchimentos */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Estilo do corpo da página */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+/* Estilo do cabeçalho de navegação */
+header {
+  background-color: #070800;
+  color: #fff;
+  padding: 10px 0;
+  text-align: center;
+}
+
+header ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+header ul li {
+  display: inline;
+  margin-right: 20px;
+}
+
+header ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+}
+
+/* Estilo do conteúdo principal */
+main {
+  padding: 30px;
+  width: 350px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.product {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 20px;
+  text-align: center;
+  height: 400px;
+  width: 250px;
+
+
+}
+
+
+.product img {
+  max-width: 100%;
+  height: auto;
+}
+
+.product h1 {
+  font-size: 24px;
+  margin: 10px 0;
+}
+
+.product p {
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+.price {
+  font-size: 18px;
+  color: #007bff;
+  margin: 10px 0;
+}
+
+.buy-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.buy-button:hover {
+  background-color: #0056b3;
+}
+
+/* Estilo do rodapé */
+footer {
+  background-color: #000000;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+}
+
+/* Estilo de link de rodapé */
+footer a {
+  color: #fff;
+  text-decoration: none;
+}

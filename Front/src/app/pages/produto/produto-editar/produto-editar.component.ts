@@ -73,9 +73,6 @@ export class ProdutoEditarComponent {
     }
 
     this.fileObj = file;
-
-    this.fileInput.nativeElement.value = '';
-    this.fileInput.nativeElement.reset();
   }
 
   imagemPadraoMudar(ii: number) {
@@ -100,11 +97,12 @@ export class ProdutoEditarComponent {
         await this.produtoService.cadastrar(this.produto);
       }
 
-      this.enviarImagem();
+      await this.enviarImagem();
 
       //this.router.navigate(['produto-listar'])
     } catch (error) {
-      alert('erro ao gravar o produto');
+      console.log(error)
+      //alert('erro ao gravar o produto');
     }
   }
 
@@ -124,11 +122,17 @@ export class ProdutoEditarComponent {
     return this.usuarioTipo !== this.EUsuarioTipo.Admin;
   }
 
-  enviarImagem() {
+  async enviarImagem() {
     const formData = new FormData();
 
     formData.append('file', this.fileObj)
 
-    this.produtoService.uploadImagem(this.idRegistro!, formData);
+    let ehPrincipal = 0;
+
+    if(!this.produto.ProdutoAnexo?.length) ehPrincipal = 1
+
+    await this.produtoService.uploadImagem(this.idRegistro!, formData, ehPrincipal);
+
+    this.carregar();
   }
 }

@@ -22,6 +22,8 @@ export class ProdutoService {
 
     if(!produtoDb) throw new AppError('Produto não encontrado');
 
+    delete produto.ProdutoAnexo;
+
     const novoProduto = await prisma.produto.update({
       data: produto,
       where: {
@@ -33,10 +35,25 @@ export class ProdutoService {
   }
 
   async pesquisar(filtros: any) {
-    let strSQL = 'SELECT * FROM Produto where 1 = 1';
-    strSQL += filtros.nome ? ` and nome like '%${filtros.nome}%'` : '';
+    let strSQL = 'SELECT p.* FROM Produto p ';
+    strSQL += ' where 1 = 1 '
+    strSQL += filtros.nome ? ` and p.nome like '%${filtros.nome}%'` : '';
 
-    const retorno = await prisma.$queryRawUnsafe(strSQL);
+    const retorno: any[] = await prisma.$queryRawUnsafe(strSQL);
+
+    return retorno;
+  }
+
+  async pesquisarLoja() {
+    let strSQL = 'SELECT p.*, pa.caminho, pa.produto_id FROM Produto p ';
+    strSQL += ' left join ProdutoAnexo pa on pa.produto_id = p.id'
+    strSQL += ' where 1 = 1 and pa.principal = 1 and p.status = 1'
+
+    const retorno: any[] = await prisma.$queryRawUnsafe(strSQL);
+
+    retorno.forEach(pa => {
+      pa.caminho = `${process.env.BASE_URL!}${pa.produto_id}/${pa.caminho}`;
+    })
 
     return retorno;
   }
@@ -60,7 +77,7 @@ export class ProdutoService {
     });
 
     produto?.ProdutoAnexo.forEach(pa => {
-      pa.caminho = `${process.env.CAMINHO_IMAGEM!}${pa.produto_id}/${pa.caminho}`;
+      pa.caminho = `${process.env.BASE_URL!}${pa.produto_id}/${pa.caminho}`;
     })
 
     return produto;
@@ -92,13 +109,14 @@ export class ProdutoService {
     produto.status = !produto.status;
 
     this.atualizar(produto);
+
   }
 
-  async gravarImagens(imagem: string, produto_id: number) {
+  async gravarImagens(imagem: string, produto_id: number, principal: number) {
     await prisma.produtoAnexo.create({
       data: {
         caminho: imagem,
-        principal: false,
+        principal: !!principal,
         produto_id,
       }
     })

@@ -1,1 +1,13 @@
-<p>menu-loja works!</p>
+<div class="pagina">
+  <Header>
+
+              <img (click)="navegarDash()"  class="logo" src="assets/img/logo.png" alt="">
+              <input type="search" placeholder="Encontre o brinquedo dos seus sonhos aqui!" class="buscar" >
+              <img src="assets/img/carrinho.png" style="height: 35%; background-color:white; padding:5px; border-radius: 5px; cursor: pointer">
+              <input type="button" value="Criar Conta/Entrar" class="btn" >
+
+  </Header>
+
+  <router-outlet></router-outlet>
+
+</div>
