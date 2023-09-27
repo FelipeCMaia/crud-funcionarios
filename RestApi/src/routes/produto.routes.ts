@@ -1,21 +1,27 @@
 import { Router } from "express";
 import { ProdutoService } from "../services/produto.service";
 import multer from 'multer';
+import * as fs from 'fs';
 
 const storage = multer.diskStorage({
   destination: function (req: any, file: any, cb: any) {
     const { id } = req.params;
 
-    const path = `${process.env.CAMINHO_IMAGEM!}${id}/`
+    const path = `${process.env.CAMINHO_IMAGEM!}${id}/`;
+
+
+    if (!fs.existsSync(path)){
+        fs.mkdirSync(path);
+    }
 
     cb(null, path)
   },
-  filename: function (req: any, file: any, cb: any) {
+  filename: function (req: any, file: Express.Multer.File, cb: any) {
+    const fileExt = file.originalname.split('.').slice(-1)
+
     const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
 
-    console.log(uniqueSuffix)
-
-    cb(null, file.fieldname + '-' + uniqueSuffix)
+    cb(null, file.fieldname + '-' + uniqueSuffix + '.' + fileExt);
   }
 });
 
@@ -66,9 +72,7 @@ produtoRoutes.post('/alterar-status/:id', async (req, res) => {
 produtoRoutes.post('/gravar-imagens/:id', upload.single('file'), async (req, res) => {
   const { id } = req.params;
 
-  console.log(req.body);
-
-  //await produtoService.gravarImagens(+id)
+  await produtoService.gravarImagens(req.file!.filename, +id);
 
   return res.json('OK');
 })

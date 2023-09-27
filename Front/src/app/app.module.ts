@@ -13,6 +13,7 @@ import { ProdutoEditarComponent } from './pages/produto/produto-editar/produto-e
 import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { ProdutoVisualizarComponent } from './pages/produto/produto-visualizar/produto-visualizar.component';
+import { ProdutoListarLojaComponent } from './pages/produto/produto-listar-loja/produto-listar-loja.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { ProdutoVisualizarComponent } from './pages/produto/produto-visualizar/p
     ProdutoListarComponent,
     ProdutoEditarComponent,
     ProdutoVisualizarComponent,
+    ProdutoListarLojaComponent,
   ],
   imports: [
     BrowserModule,

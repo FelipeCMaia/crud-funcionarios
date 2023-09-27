@@ -15,6 +15,8 @@ export class UsuarioService {
 
     usuario.senha = encriptarMD5(usuario.senha as string);
 
+    usuario.ativo = true;
+
     const novoUsuario = await prisma.usuario.create({
       data: usuario
     });
@@ -22,7 +24,7 @@ export class UsuarioService {
     return novoUsuario;
   }
 
-  async atualizar(usuario: Prisma.UsuarioUncheckedUpdateInput) {    
+  async atualizar(usuario: Prisma.UsuarioUncheckedUpdateInput) {
     const usuariocpfExiste = await this.buscarPorCpf(usuario.cpf as string);
 
     if(usuariocpfExiste && usuariocpfExiste.email != usuario.email) throw new AppError('Usuário já cadastrado com esse cpf');

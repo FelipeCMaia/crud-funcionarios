@@ -50,14 +50,14 @@
         <hr>
 
         <div class="col-lg-6" *ngIf="!campoLiberado()">
-          <input #fileInput type="file" class="form-control" (change)="inputImagemSelecionado($event)" multiple>
+          <input #fileInput type="file" class="form-control" (change)="inputImagemSelecionado($event)">
         </div>
 
         <div class="col-lg-12 images-preview">
-          <div *ngFor="let file of fileList; let ii=index;" class="imagem-div">
+          <div *ngFor="let file of produto.ProdutoAnexo; let ii=index;" class="imagem-div">
             <button class="btn btn-danger" (click)="removerImagem(ii)">X</button>
 
-            <img [src]="file.url" width="200px">
+            <img [src]="file.caminho" width="200px">
 
             <label class="form-check-label" [for]="'imgPadrao-' + ii">
               Imagem Padrão

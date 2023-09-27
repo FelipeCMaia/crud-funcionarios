@@ -37,6 +37,10 @@ export class ProdutoService {
   }
 
   uploadImagem(id: string, formData: any) {
-    return this.axiosInstance.post('produto/gravar-imagens/' + id, formData);
+    return this.axiosInstance.post('produto/gravar-imagens/' + id, formData, {
+      headers: {
+        "Content-Type": 'multipart/form-data',
+      }
+    });
   }
 }

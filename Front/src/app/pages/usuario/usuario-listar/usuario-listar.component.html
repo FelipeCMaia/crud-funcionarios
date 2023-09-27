@@ -28,18 +28,20 @@
         <th>Email</th>
         <th>Status</th>
         <th>Alterar</th>
+        <th>Mudar Status</th>
       </thead>
 
       <tbody>
         <tr *ngFor="let user of usuarios">
           <td>{{user.nome}}</td>
           <td>{{user.email}}</td>
-          <td>{{user.ativo}}</td>
+          <td>{{user.ativo == 1 ? "Ativo" : "Desativado"}}</td>
           <td>
             <a [routerLink]="'/usuario-editar/' + user.id">
               alterar
             </a>
           </td>
+          <td><button class="btn btn-primary btn-sm" (click)="mudarStatus(user)">Mudar Status</button></td>
         </tr>
       </tbody>
     </table>

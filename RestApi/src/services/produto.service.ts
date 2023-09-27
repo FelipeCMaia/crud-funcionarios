@@ -1,7 +1,6 @@
 import { Prisma, Produto } from "@prisma/client";
 import { prisma } from "../database/prismaClient";
 import { AppError } from "../error/AppError";
-import { encriptarMD5 } from "../extensions/encrypt";
 
 export class ProdutoService {
   async gravar(produto: Prisma.ProdutoUncheckedCreateInput): Promise<any> {
@@ -51,22 +50,37 @@ export class ProdutoService {
   }
 
   async carregar(produtoId: number) {
-    return prisma.produto.findFirst({
+    const produto = await prisma.produto.findFirst({
       where: {
         id: produtoId,
       },
+      include: {
+        ProdutoAnexo: true,
+      },
     });
+
+    produto?.ProdutoAnexo.forEach(pa => {
+      pa.caminho = `${process.env.CAMINHO_IMAGEM!}${pa.produto_id}/${pa.caminho}`;
+    })
+
+    return produto;
   }
 
   async buscarPorCodigo(codigo: string): Promise<Produto | null> {
     return prisma.produto.findFirst({
       where: { codigo },
+      include: {
+        ProdutoAnexo: true,
+      }
     });
   }
 
   async buscarPorId(id: number): Promise<Produto | null> {
     return prisma.produto.findFirst({
       where: { id },
+      include: {
+        ProdutoAnexo: true,
+      }
     });
   }
 
@@ -80,15 +94,13 @@ export class ProdutoService {
     this.atualizar(produto);
   }
 
-  async gravarImagens(imagens: string[], produto_id: number) {
-    for(let img of imagens) {
-      await prisma.produtoAnexo.create({
-        data: {
-          caminho: img,
-          principal: false,
-          produto_id,
-        }
-      })
-    }
+  async gravarImagens(imagem: string, produto_id: number) {
+    await prisma.produtoAnexo.create({
+      data: {
+        caminho: imagem,
+        principal: false,
+        produto_id,
+      }
+    })
   }
 }
