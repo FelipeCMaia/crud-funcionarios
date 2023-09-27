@@ -14,6 +14,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { ProdutoVisualizarComponent } from './pages/produto/produto-visualizar/produto-visualizar.component';
 import { ProdutoListarLojaComponent } from './pages/produto/produto-listar-loja/produto-listar-loja.component';
+import { MenuLojaComponent } from './shared/components/menu-loja/menu-loja.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { ProdutoListarLojaComponent } from './pages/produto/produto-listar-loja/
     ProdutoEditarComponent,
     ProdutoVisualizarComponent,
     ProdutoListarLojaComponent,
+    MenuLojaComponent,
   ],
   imports: [
     BrowserModule,

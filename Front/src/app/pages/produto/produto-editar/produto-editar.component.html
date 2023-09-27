@@ -57,7 +57,7 @@
           <div *ngFor="let file of produto.ProdutoAnexo; let ii=index;" class="imagem-div">
             <button class="btn btn-danger" (click)="removerImagem(ii)">X</button>
 
-            <img [src]="file.caminho" width="200px">
+            <img [src]="'http://localhost:8080' + file.caminho" width="200px">
 
             <label class="form-check-label" [for]="'imgPadrao-' + ii">
               Imagem Padrão
