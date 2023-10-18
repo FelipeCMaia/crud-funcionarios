@@ -9,6 +9,8 @@ import { ProdutoEditarComponent } from './pages/produto/produto-editar/produto-e
 import { ProdutoVisualizarComponent } from './pages/produto/produto-visualizar/produto-visualizar.component';
 import { MenuLojaComponent } from './shared/components/menu-loja/menu-loja.component';
 import { ProdutoListarLojaComponent } from './pages/produto/produto-listar-loja/produto-listar-loja.component';
+import { CadastroClienteComponent } from './pages/cadastro-cliente/cadastro-cliente.component';
+import { LojaLoginComponent } from './pages/loja-login/loja-login.component';
 
 const routes: Routes = [
   {
@@ -59,7 +61,15 @@ const routes: Routes = [
         path: 'produto/:id',
         component: ProdutoVisualizarComponent
       },
+      {
+        path: 'cadastro-cliente',
+        component: CadastroClienteComponent,
+      },
     ]
+  },
+  {
+    path: 'login',
+    component: LojaLoginComponent,
   }
 ];
 

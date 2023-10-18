@@ -1,16 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
+import { Utilitarios } from '../../classes/utilitarios';
 
 @Component({
   selector: 'app-menu-loja',
   templateUrl: './menu-loja.component.html',
   styleUrls: ['./menu-loja.component.css']
 })
-export class MenuLojaComponent {
+export class MenuLojaComponent implements OnInit {
   constructor(private router: Router) {}
 
-  faCartShopping = faCartShopping;
+  nomeCliente: string | null = null;
+
+  ngOnInit(): void {
+    this.nomeCliente = Utilitarios.obterCliente();
+  }
 
   navegarDash() {
     this.router.navigate(['loja/produtos']);

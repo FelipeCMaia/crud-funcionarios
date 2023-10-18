@@ -50,3 +50,26 @@ model ProdutoAnexo {
 
   produto Produto @relation(fields: [produto_id], references: [id], map: "produto_produto_anexo_id_fkey")
 }
+
+model Cliente {
+  id              Int               @id @default(autoincrement())
+  nome_completo   String            @db.VarChar(120)
+  cpf             String            @unique @db.VarChar(11)
+  email           String            @unique @db.VarChar(100)
+  data_nascimento DateTime          @db.Date
+  senha           String            @db.VarChar(100)
+  ClienteEndereco ClienteEndereco[]
+}
+
+model ClienteEndereco {
+  id          Int     @id @default(autoincrement())
+  cep         String? @db.VarChar(8)
+  logradouro  String? @db.VarChar(150)
+  bairro      String? @db.VarChar(150)
+  cidade      String? @db.VarChar(150)
+  numero      String? @db.VarChar(150)
+  complemento String? @db.VarChar(150)
+  cliente_id  Int     @db.Int
+
+  cliente Cliente @relation(fields: [cliente_id], references: [id], map: "cliente_cliente_endereco_id_fkey")
+}

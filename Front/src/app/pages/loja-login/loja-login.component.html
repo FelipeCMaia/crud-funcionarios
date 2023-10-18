@@ -1,0 +1,14 @@
+<div class="pagina">
+  <form class="login">
+
+    <h1>Faça seu Login</h1>
+
+    <input type="email" name="email" id="email" placeholder="Digite seu E-mail" [(ngModel)]="email">
+    <input type="password" name="password" id="password" placeholder="Digite sua Senha" [(ngModel)]="senha">
+
+    <a routerLink="/loja/cadastro-cliente">Realizar Cadastro</a>
+
+    <input type="button" value="Entrar" class="btn" (click)="login()">
+  </form>
+
+</div>

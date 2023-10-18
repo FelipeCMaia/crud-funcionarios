@@ -1,0 +1,116 @@
+<div class="card mt-5">
+  <div class="card-header">
+    <h3>Faça o seu cadastro</h3>
+  </div>
+
+  <div class="card-body">
+
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="cpf">Nome:</label>
+          <input class="form-control" type="cpf" id="cpf" [(ngModel)]="registro.nome_completo">
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="email">Email:</label>
+          <input class="form-control" type="email" id="email" [(ngModel)]="registro.email">
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="cpf">CPF:</label>
+          <input class="form-control" type="cpf" id="cpf" [(ngModel)]="registro.cpf" mask="000.000.000-00">
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="date">Data Nascimento:</label>
+          <input class="form-control" type="date" id="date" [(ngModel)]="registro.data_nascimento">
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="senha">Senha:</label>
+          <input class="form-control" type="password" id="senha" [(ngModel)]="registro.senha">
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="confirmarSenha">Confirmar Senha:</label>
+          <input class="form-control" type="password" id="confirmarSenha" [(ngModel)]="registro.confirmarSenha">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-footer">
+    <div class="row">
+      <div class="col-lg-12">
+        <button type="submit" class="btn btn-sm btn-primary" (click)="gravar()">Gravar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card mt-5" *ngFor="let endereco of enderecos; let ii=index;">
+  <div class="card-header">
+    <h3>Endereço</h3>
+    <button class="btn btn-sm btn-success float-right" (click)="adicionarEndereco()">Adicionar Endereço</button>
+
+    <button class="btn btn-sm btn-danger" *ngIf="enderecos.length > 1" (click)="removerEndereco(ii)">Remover Endereço</button>
+  </div>
+
+  <div class="card-body">
+    <div class="row">
+      <div class="col-lg-2">
+        <div class="mb-3">
+          <label for="cep">CEP:</label>
+          <input type="text" class="form-control" id="cep" mask="00000-000" [(ngModel)]="endereco.cep" (focusout)="consultarCEP(endereco)">
+        </div>
+      </div>
+
+      <div class="col-lg-7">
+        <div class="mb-3">
+          <label for="logradouro">Logradouro:</label>
+          <input type="text" class="form-control" id="logradouro" [(ngModel)]="endereco.logradouro">
+        </div>
+      </div>
+
+      <div class="col-lg-1">
+        <div class="mb-3">
+          <label for="numero">N°:</label>
+          <input type="text" class="form-control" id="numero" [(ngModel)]="endereco.numero">
+        </div>
+      </div>
+
+      <div class="col-lg-2">
+        <div class="mb-3">
+          <label for="complemento">Complemento:</label>
+          <input type="text" class="form-control" id="complemento" [(ngModel)]="endereco.complemento">
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="bairro">Bairro:</label>
+          <input type="text" class="form-control" id="bairro" [(ngModel)]="endereco.bairro">
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="mb-3">
+          <label for="cidade">Cidade:</label>
+          <input type="text" class="form-control" id="cidade" [(ngModel)]="endereco.cidade">
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

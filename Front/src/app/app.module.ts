@@ -15,8 +15,6 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { ProdutoVisualizarComponent } from './pages/produto/produto-visualizar/produto-visualizar.component';
 import { ProdutoListarLojaComponent } from './pages/produto/produto-listar-loja/produto-listar-loja.component';
 import { MenuLojaComponent } from './shared/components/menu-loja/menu-loja.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-
 
 
 @NgModule({
@@ -31,14 +29,16 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     ProdutoVisualizarComponent,
     ProdutoListarLojaComponent,
     MenuLojaComponent,
+    LojaLoginComponent,
+    CadastroClienteComponent,
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
     ToastrModule.forRoot(),
     NgxSpinnerModule,
-    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
