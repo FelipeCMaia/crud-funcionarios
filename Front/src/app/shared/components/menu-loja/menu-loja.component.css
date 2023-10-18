@@ -1,41 +1,36 @@
-.logo{
+.logo {
   width: 180px;
   margin-bottom: 30px;
-  margin-left: 20px
+  margin-left: 20px;
 }
 
-
-header{
-  background-color:  #023047 ;
+header {
+  background-color: #023047;
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 17vh;
   box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.4);
-
 }
 
-
 .btn {
-      color: #fff;
-      margin-right: 50px;
-      font-size: 20px;
-      font-weight: 600;
-      border: none !important;
-      transition: all linear 160ms;
-      cursor: pointer;
-      transform: scale(1.05);
-      background-color: #023047;
-      color: white;
+  color: #fff;
+  margin-right: 50px;
+  font-size: 20px;
+  font-weight: 600;
+  border: none !important;
+  transition: all linear 160ms;
+  cursor: pointer;
+  transform: scale(1.05);
+  background-color: #023047;
+  color: white;
+}
 
-    }
-
-.buscar{
-padding: 20px;
-font-size: 20px;
-align-items: center;
-border-radius: 10px;
-transition: all linear 160ms;
-width:100vh;
-
+.buscar {
+  padding: 20px;
+  font-size: 20px;
+  align-items: center;
+  border-radius: 10px;
+  transition: all linear 160ms;
+  width: 80vh;
 }

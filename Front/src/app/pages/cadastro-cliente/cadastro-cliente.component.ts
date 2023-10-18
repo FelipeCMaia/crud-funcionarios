@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import * as moment from 'moment';
 import { ToastrService } from 'ngx-toastr';
 import { Utilitarios } from 'src/app/shared/classes/utilitarios';
 import { ClienteService } from 'src/app/shared/services/cliente.service';
@@ -10,7 +11,7 @@ import { ViaCepService } from 'src/app/shared/services/viaCep.service';
   templateUrl: './cadastro-cliente.component.html',
   styleUrls: ['./cadastro-cliente.component.css']
 })
-export class CadastroClienteComponent {
+export class CadastroClienteComponent implements OnInit {
   constructor(
     private viaCepService: ViaCepService,
     private toastr: ToastrService,
@@ -18,10 +19,17 @@ export class CadastroClienteComponent {
     private router: Router,
   ){}
 
-  enderecos: any[] = [];
+  enderecos: any[] = [{}];
   registro: any = {};
 
   faturamento: any = 0;
+
+  clienteId = Utilitarios.obterClienteId();
+
+
+  ngOnInit(): void {
+    if(this.clienteId) this.carregarCliente()
+  }
 
   async consultarCEP(endereco: any) {
     const viaCep = await this.viaCepService.consultar(endereco.cep);
@@ -38,11 +46,20 @@ export class CadastroClienteComponent {
   }
 
   removerEndereco(index: number) {
-    const atualizaFaturamento = this.enderecos[index].faturamento === index
+    const atualizaFaturamento = this.faturamento === index
 
     this.enderecos.splice(index, 1);
 
-    if(atualizaFaturamento) this.faturamento = 0
+    if(atualizaFaturamento){
+       this.faturamento = 0;
+       setTimeout(() => {
+        const radio: any = document.querySelectorAll('.form-check-input');
+        radio[0].checked = true;
+       }, 100);
+
+      }
+
+
   }
 
   async gravar() {
@@ -90,23 +107,44 @@ export class CadastroClienteComponent {
       return;
     }
 
-    if(!this.registro.senha) {
+    if(!this.registro.senha && !this.clienteId) {
       this.toastr.error('Informe sua Senha', 'Atenção');
       return;
     }
 
     this.registro.enderecos = this.enderecos;
 
+    this.registro.enderecos.forEach((end: any) => end.faturamento = false);
+
     this.registro.enderecos[this.faturamento].faturamento = true;
 
     try {
-      await this.clienteService.cadastrar(this.registro);
+      if(this.clienteId) {
+        await this.clienteService.atualizar(this.registro);
+      } else {
+        await this.clienteService.cadastrar(this.registro);
+        this.router.navigate(['/']);
+      }
 
-      this.router.navigate(['/']);
-
-      this.toastr.success('Cadastro efetuado com sucesso');
+      this.toastr.success('Usuário salvo com sucesso');
     } catch (error) {
       this.toastr.error('Erro ao gravar usuario', 'Erro');
     }
+  }
+
+  async carregarCliente() {
+    const { data } = await this.clienteService.carregar(this.clienteId!);
+
+    this.registro = data;
+
+    this.registro.data_nascimento = moment(this.registro.data_nascimento).utc().format('YYYY-MM-DD');
+
+    this.enderecos = this.registro.ClienteEndereco.length ? this.registro.ClienteEndereco : [{}];
+
+    this.enderecos.forEach((end, index) => {
+      if(end.faturamento) {
+        this.faturamento = index;
+      }
+    })
   }
 }

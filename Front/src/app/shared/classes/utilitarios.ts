@@ -17,6 +17,22 @@ export class Utilitarios {
     return localStorage.getItem('cliente');
   }
 
+  static removerCliente() {
+    localStorage.removeItem('cliente');
+  }
+
+  static gravarClienteId(nomeClienteId: string) {
+    localStorage.setItem('clienteId', nomeClienteId);
+  }
+
+  static obterClienteId() {
+    return localStorage.getItem('clienteId');
+  }
+
+  static removerClienteId() {
+    localStorage.removeItem('clienteId');
+  }
+
   static gravarUsuarioTipo(tipo: string) {
     localStorage.setItem('usuarioTipo', tipo);
   }

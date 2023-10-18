@@ -20,6 +20,7 @@ export class LojaLoginComponent {
       const { data } = await this.usuarioservice.login(this.email, this.senha);
 
       Utilitarios.gravarCliente(data.cliente.nome_completo);
+      Utilitarios.gravarClienteId(data.cliente.id);
 
       this.router.navigate(['loja/produtos'])
 

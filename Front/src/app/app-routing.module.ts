@@ -65,6 +65,10 @@ const routes: Routes = [
         path: 'cadastro-cliente',
         component: CadastroClienteComponent,
       },
+      {
+        path: 'meu-perfil',
+        component: CadastroClienteComponent,
+      },
     ]
   },
   {

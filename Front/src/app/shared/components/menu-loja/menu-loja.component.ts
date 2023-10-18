@@ -19,4 +19,8 @@ export class MenuLojaComponent implements OnInit {
   navegarDash() {
     this.router.navigate(['loja/produtos']);
   }
+
+  sair() {
+    Utilitarios.removerCliente();
+  }
 }
