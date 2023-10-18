@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-menu-loja',
@@ -8,6 +9,8 @@ import { Router } from '@angular/router';
 })
 export class MenuLojaComponent {
   constructor(private router: Router) {}
+
+  faCartShopping = faCartShopping;
 
   navegarDash() {
     this.router.navigate(['loja/produtos']);
