@@ -15,6 +15,11 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { ProdutoVisualizarComponent } from './pages/produto/produto-visualizar/produto-visualizar.component';
 import { ProdutoListarLojaComponent } from './pages/produto/produto-listar-loja/produto-listar-loja.component';
 import { MenuLojaComponent } from './shared/components/menu-loja/menu-loja.component';
+import { LojaLoginComponent } from './pages/loja-login/loja-login.component';
+import { CadastroClienteComponent } from './pages/cadastro-cliente/cadastro-cliente.component';
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 @NgModule({
@@ -29,15 +34,22 @@ import { MenuLojaComponent } from './shared/components/menu-loja/menu-loja.compo
     ProdutoVisualizarComponent,
     ProdutoListarLojaComponent,
     MenuLojaComponent,
+    LojaLoginComponent,
+    CadastroClienteComponent,
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
     ToastrModule.forRoot(),
     NgxSpinnerModule,
+    NgxMaskDirective,
+    NgxMaskPipe,
   ],
-  providers: [],
+  providers: [
+    provideNgxMask(),
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,13 +1,18 @@
 <div class="pagina">
   <Header>
 
-              <img (click)="navegarDash()"  class="logo" src="assets/img/logo.png" alt="">
-              <input type="search" placeholder="Encontre o brinquedo dos seus sonhos aqui!" class="buscar" >
-              <img src="assets/img/carrinho.png" style="height: 35%; background-color:white; padding:5px; border-radius: 5px; cursor: pointer">
-              <input type="button" value="Criar Conta/Entrar" class="btn" >
+    <img (click)="navegarDash()" class="logo" src="assets/img/logo.png" alt="">
+    <input type="search" placeholder="Encontre o brinquedo dos seus sonhos aqui!" class="buscar">
+    <img src="assets/img/carrinho.png" style="height: 35%; background-color:white; padding:5px; border-radius: 5px; cursor: pointer">
+
+    <p *ngIf="nomeCliente">{{nomeCliente}}</p>
+
+    <a *ngIf="!nomeCliente" class="btn" routerLink="/login">Criar Conta/Entrar</a>
 
   </Header>
 
-  <router-outlet></router-outlet>
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
 
 </div>
