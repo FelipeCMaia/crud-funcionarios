@@ -45,8 +45,13 @@ export class ClienteService {
 
     if(clientecpfExiste && clientecpfExiste.email != cliente.email) throw new AppError('Usuário já cadastrado com esse cpf');
 
+    const enderecos = cliente.enderecos;
+
     cliente.senha = cliente.senha ? encriptarMD5(cliente.senha as string) : clientecpfExiste?.senha;
     cliente.data_nascimento = moment(cliente.data_nascimento?.toString(), 'yyyy-MM-DD').toDate();
+
+    delete cliente.enderecos;
+    delete cliente.ClienteEndereco;
 
     const novoCliente = await prisma.cliente.update({
       data: cliente,
@@ -54,6 +59,23 @@ export class ClienteService {
         email: cliente.email as string
       },
     });
+
+    await prisma.clienteEndereco.deleteMany({
+      where: {
+        cliente_id: clientecpfExiste?.id
+      }
+    });
+
+    enderecos.forEach(async (end: any) => {
+      const novoEndereco: Prisma.ClienteEnderecoUncheckedCreateInput = {
+        ...end,
+        cliente_id: clientecpfExiste?.id,
+      }
+
+      await prisma.clienteEndereco.create({
+        data: novoEndereco,
+      });
+    })
 
     return novoCliente;
   }
@@ -76,11 +98,18 @@ export class ClienteService {
   }
 
   async carregar(clienteId: number) {
-    return prisma.cliente.findFirst({
+    const retorno: any = await prisma.cliente.findFirst({
       where: {
         id: clienteId,
       },
+      include: {
+         ClienteEndereco: true,
+      }
     });
+
+    delete retorno?.senha;
+
+    return retorno;
   }
 
   async buscarPorEmail(email: string): Promise<Cliente | null> {
@@ -101,9 +130,6 @@ export class ClienteService {
     }
 
     const hashSenha = encriptarMD5(senha);
-
-    console.log(email)
-    console.log(hashSenha)
 
     const cliente = await prisma.cliente.findUnique({
        where: {
