@@ -18,8 +18,10 @@ export class CadastroClienteComponent {
     private router: Router,
   ){}
 
-  enderecos: any[] = [{}];
+  enderecos: any[] = [];
   registro: any = {};
+
+  faturamento: any = 0;
 
   async consultarCEP(endereco: any) {
     const viaCep = await this.viaCepService.consultar(endereco.cep);
@@ -36,7 +38,11 @@ export class CadastroClienteComponent {
   }
 
   removerEndereco(index: number) {
+    const atualizaFaturamento = this.enderecos[index].faturamento === index
+
     this.enderecos.splice(index, 1);
+
+    if(atualizaFaturamento) this.faturamento = 0
   }
 
   async gravar() {
@@ -90,6 +96,8 @@ export class CadastroClienteComponent {
     }
 
     this.registro.enderecos = this.enderecos;
+
+    this.registro.enderecos[this.faturamento].faturamento = true;
 
     try {
       await this.clienteService.cadastrar(this.registro);

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +16,8 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { ProdutoVisualizarComponent } from './pages/produto/produto-visualizar/produto-visualizar.component';
 import { ProdutoListarLojaComponent } from './pages/produto/produto-listar-loja/produto-listar-loja.component';
 import { MenuLojaComponent } from './shared/components/menu-loja/menu-loja.component';
+import { LojaLoginComponent } from './pages/loja-login/loja-login.component';
+import { CadastroClienteComponent } from './pages/cadastro-cliente/cadastro-cliente.component';
 
 
 @NgModule({
