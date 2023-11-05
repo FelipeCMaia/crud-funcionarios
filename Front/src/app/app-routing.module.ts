@@ -11,6 +11,8 @@ import { MenuLojaComponent } from './shared/components/menu-loja/menu-loja.compo
 import { ProdutoListarLojaComponent } from './pages/produto/produto-listar-loja/produto-listar-loja.component';
 import { CadastroClienteComponent } from './pages/cadastro-cliente/cadastro-cliente.component';
 import { LojaLoginComponent } from './pages/loja-login/loja-login.component';
+import { CarrinhoComponent } from './pages/compra/carrinho/carrinho.component';
+import { FormaPagamentoComponent } from './pages/compra/forma-pagamento/forma-pagamento.component';
 
 const routes: Routes = [
   {
@@ -68,6 +70,14 @@ const routes: Routes = [
       {
         path: 'meu-perfil',
         component: CadastroClienteComponent,
+      },
+      {
+        path: 'carrinho',
+        component: CarrinhoComponent,
+      },
+      {
+        path: 'forma-pagamento',
+        component: FormaPagamentoComponent,
       },
     ]
   },

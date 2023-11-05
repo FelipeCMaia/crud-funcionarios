@@ -97,6 +97,14 @@ export class ClienteService {
     });
   }
 
+  async listarEnderecos(cliente_id: number) {
+    return prisma.clienteEndereco.findMany({
+      where: {
+        cliente_id,
+      }
+    });
+  }
+
   async carregar(clienteId: number) {
     const retorno: any = await prisma.cliente.findFirst({
       where: {

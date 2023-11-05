@@ -41,3 +41,9 @@ clienteRoutes.post('/login', async (req, res) => {
 
   return res.json(await clienteService.autenticar(email, senha));
 });
+
+clienteRoutes.get('/listar-enderecos/:id', async (req, res) => {
+  const { id } = req.params;
+
+  return res.json(await clienteService.listarEnderecos(+id));
+})

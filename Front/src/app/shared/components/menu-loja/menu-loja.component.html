@@ -3,7 +3,7 @@
 
     <img (click)="navegarDash()" class="logo" src="assets/img/logo.png" alt="">
     <input type="search" placeholder="Encontre o brinquedo dos seus sonhos aqui!" class="buscar">
-    <img src="assets/img/carrinho.png" style="height: 35%; background-color:white; padding:5px; border-radius: 5px; cursor: pointer">
+    <img src="assets/img/carrinho.png" style="height: 35%; background-color:white; padding:5px; border-radius: 5px; cursor: pointer" routerLink="/loja/carrinho">
 
     <p style="color: white;" *ngIf="nomeCliente"> <span routerLink="/loja/meu-perfil"> {{nomeCliente}} </span> | <span style="cursor: pointer;" routerLink="/login" (click)="sair()">SAIR</span> </p>
 

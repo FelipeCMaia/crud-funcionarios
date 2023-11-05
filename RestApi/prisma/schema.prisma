@@ -59,6 +59,7 @@ model Cliente {
   data_nascimento DateTime          @db.Date
   senha           String            @db.VarChar(100)
   ClienteEndereco ClienteEndereco[]
+  Venda           Venda[]
 }
 
 model ClienteEndereco {
@@ -72,5 +73,27 @@ model ClienteEndereco {
   cliente_id  Int      @db.Int
   faturamento Boolean? @db.TinyInt
 
+  venda Venda[]
+
   cliente Cliente @relation(fields: [cliente_id], references: [id], map: "cliente_cliente_endereco_id_fkey")
+}
+
+model Venda {
+  id         Int         @id @default(autoincrement())
+  cliente_id Int         @db.Int
+  status     String      @db.VarChar(10)
+  cliente_endereco_id Int?
+  VendaItem  VendaItem[]
+
+  cliente           Cliente          @relation(fields: [cliente_id], references: [id])
+  ClienteEndereco   ClienteEndereco? @relation(fields: [cliente_endereco_id], references: [id])
+}
+
+model VendaItem {
+  id         Int @id @default(autoincrement())
+  produto_id Int @db.Int
+  quantidade Int @db.Int
+  venda_id   Int @db.Int
+
+  Venda Venda? @relation(fields: [venda_id], references: [id])
 }

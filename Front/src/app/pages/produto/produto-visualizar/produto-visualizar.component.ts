@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { CarrinhoService } from 'src/app/shared/services/carrinho.service';
 import { ProdutoService } from 'src/app/shared/services/produto.service';
 
 @Component({
@@ -15,6 +16,7 @@ export class ProdutoVisualizarComponent implements OnInit {
     private readonly produtoService: ProdutoService,
     private readonly toastr: ToastrService,
     private readonly activatedRoute: ActivatedRoute,
+    private readonly carrinho: CarrinhoService,
     ) {}
 
     idRegistro: string | null = null;
@@ -35,5 +37,9 @@ export class ProdutoVisualizarComponent implements OnInit {
     this.produto = data;
 
     return;
+  }
+
+  adicionarCarrinho() {
+    this.carrinho.AdicionarProduto(this.produto, 1);
   }
 }

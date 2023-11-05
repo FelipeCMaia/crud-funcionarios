@@ -1,0 +1,136 @@
+<div class="row mb-5">
+  <div class="col-lg-12">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="mb-3 mt-3">
+          <label for="" class="form-label">CEP:</label>
+          <div style="display: flex;">
+            <input type="text" class="form-control form-control-sm" [(ngModel)]="cep">
+            <button class="btn btn-success" (click)="consultarCEP(cep)">AdicionarEndereço</button>
+          </div>
+        </div>
+      </div>
+      <p *ngIf="endereco">Entrega: {{endereco.logradouro}} - {{endereco.cidade}}</p>
+    </div>
+  </div>
+
+  <div class="col-lg-12" *ngIf="enderecosCliente.length">
+    <div class="card">
+      <div class="card-header">
+        <h2>Endereços</h2>
+      </div>
+
+      <div class="card-body">
+        <div *ngFor="let endCliente of enderecosCliente">
+          <input type="radio" name="enderecoCliente" [(ngModel)]="endereco" [value]="endCliente">
+          {{endCliente.logradouro}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-8">
+    <div class="card mt-5">
+      <div class="card-header">
+        <h4>Carrinho de Compras</h4>
+      </div>
+
+      <div class="card-body">
+        <div class="produtos">
+          <div class="produto" *ngFor="let item of carrinho.produtos">
+            <div class="img-produto">
+              <img style="width: 50px;" [src]="item.produto.ProdutoAnexo[0].caminho">
+
+              <div class="nome-produto">
+                {{item.produto.nome}}
+              </div>
+
+            </div>
+
+
+
+            <div class="qtd-produto">
+              <div style="display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: flex-start;">
+                <div class="btn-group">
+                  <button class="btn btn-sm" (click)="aumentarQtd(item.produto)">+</button>
+                  <input style="width: 33px; text-align: center;" class="form-control form-control-sm" type="text" [(ngModel)]="item.quantidade" disabled>
+                  <button class="btn btn-sm" (click)="removerQtd(item.produto)">-</button>
+                </div>
+                <button class="btn btn-sm btn-danger" (click)="removerProduto(item.produto)">Remover</button>
+              </div>
+
+              <div>
+                {{item.produto.valor * item.quantidade | currency : 'BRL'}}
+              </div>
+            </div>
+          </div>
+
+          <div class="carrinho-vazio" *ngIf="!carrinho.produtos.length">
+            Nenhum Produto no Carrinho
+          </div>
+        </div>
+
+        <div class="total">
+          <p style="text-align: end;">
+            Total: {{carrinho.total | currency : 'BRL'}}
+          </p>
+        </div>
+      </div>
+
+      <div class="card-footer">
+        <button style="float: right;" class="btn btn-primary" (click)="proseguir()">Prosseguir</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-4">
+    <div class="card mt-5">
+      <div class="card-header">
+        <h4>Frete</h4>
+      </div>
+
+      <div class="card-body">
+        <p>
+          Selecione uma opção de frete:
+        </p>
+
+        <div *ngIf="endereco">
+          <input type="radio" value="20.50" name="valorFrete" [(ngModel)]="valorFrete" [defaultChecked]="true">
+          <label for="" > - OPT 1 - R$ 20,50</label>
+          <br>
+          <input type="radio" value="21.50" name="valorFrete" [(ngModel)]="valorFrete">
+          <label for="" > - OPT 2 - R$ 21,50</label>
+          <br>
+          <input type="radio" value="22.50" name="valorFrete" [(ngModel)]="valorFrete">
+          <label for="" > - OPT 3 - R$ 22,50</label>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-8"></div>
+
+  <div class="col-lg-4">
+    <div class="card mt-5">
+      <div class="card-header">
+        <h4>Calculo do total</h4>
+      </div>
+      <div class="card-body">
+        Carrinho: {{carrinho.total | currency : 'BRL'}}
+        <br>
+        Frete: {{valorFrete | currency : 'BRL' }}
+
+        <hr>
+
+        Total: {{(valorFrete + carrinho.total) | currency : 'BRL'}}
+      </div>
+    </div>
+  </div>
+
+</div>
+
+

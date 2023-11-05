@@ -18,6 +18,8 @@ import { ProdutoListarLojaComponent } from './pages/produto/produto-listar-loja/
 import { MenuLojaComponent } from './shared/components/menu-loja/menu-loja.component';
 import { LojaLoginComponent } from './pages/loja-login/loja-login.component';
 import { CadastroClienteComponent } from './pages/cadastro-cliente/cadastro-cliente.component';
+import { CarrinhoComponent } from './pages/compra/carrinho/carrinho.component';
+import { FormaPagamentoComponent } from './pages/compra/forma-pagamento/forma-pagamento.component';
 
 
 @NgModule({
@@ -34,6 +36,8 @@ import { CadastroClienteComponent } from './pages/cadastro-cliente/cadastro-clie
     MenuLojaComponent,
     LojaLoginComponent,
     CadastroClienteComponent,
+    CarrinhoComponent,
+    FormaPagamentoComponent,
   ],
   imports: [
     BrowserModule,

@@ -112,6 +112,17 @@ export class CadastroClienteComponent implements OnInit {
       return;
     }
 
+    let invalido = false;
+
+    this.enderecos.forEach(end => {
+      if(!end.cep){
+        this.toastr.error('informe um endereço válido', 'erro');
+        invalido = true;
+      }
+    });
+
+    if(invalido) return;
+
     this.registro.enderecos = this.enderecos;
 
     this.registro.enderecos.forEach((end: any) => end.faturamento = false);
@@ -123,7 +134,7 @@ export class CadastroClienteComponent implements OnInit {
         await this.clienteService.atualizar(this.registro);
       } else {
         await this.clienteService.cadastrar(this.registro);
-        this.router.navigate(['/']);
+        this.router.navigate(['/login']);
       }
 
       this.toastr.success('Usuário salvo com sucesso');

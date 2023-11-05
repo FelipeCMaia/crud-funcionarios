@@ -22,5 +22,6 @@ export class MenuLojaComponent implements OnInit {
 
   sair() {
     Utilitarios.removerCliente();
+    Utilitarios.removerClienteId();
   }
 }

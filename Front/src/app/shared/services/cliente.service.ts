@@ -35,4 +35,8 @@ export class ClienteService {
   excluir(id: string) {
     return this.axiosInstance.post('cliente', + id);
   }
+
+  listarEnderecos(id: number) {
+    return this.axiosInstance.get('cliente/listar-enderecos/' + id);
+  }
 }
