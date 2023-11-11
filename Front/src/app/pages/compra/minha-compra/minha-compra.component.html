@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-header">
+        <h4>Minhas Compras</h4>
+      </div>
+
+      <div class="card-body">
+        <div class="card mt-3" *ngFor="let carrinho of compras">
+          <div class="card-body" >
+            <p>Numero do pedido: {{carrinho.id}}</p>
+            <p>Endereço: {{carrinho.endereco.logradouro}}, {{carrinho.endereco.numero}}</p>
+            <p>Valor dos produtos: {{carrinho.total | currency : 'BRL'}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+

@@ -5,6 +5,8 @@
     <input type="search" placeholder="Encontre o brinquedo dos seus sonhos aqui!" class="buscar">
     <img src="assets/img/carrinho.png" style="height: 35%; background-color:white; padding:5px; border-radius: 5px; cursor: pointer" routerLink="/loja/carrinho">
 
+    <a *ngIf="nomeCliente" class="btn" routerLink="/loja/compras">Minhas Compras</a>
+
     <p style="color: white;" *ngIf="nomeCliente"> <span routerLink="/loja/meu-perfil"> {{nomeCliente}} </span> | <span style="cursor: pointer;" routerLink="/login" (click)="sair()">SAIR</span> </p>
 
     <a *ngIf="!nomeCliente" class="btn" routerLink="/login">Criar Conta/Entrar</a>

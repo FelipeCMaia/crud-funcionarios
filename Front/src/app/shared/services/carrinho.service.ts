@@ -33,6 +33,8 @@ export class CarrinhoService {
         throw new Error("Não há produtos disponiveis para realizar a operação");
       }
 
+      this.carrinho.id = new Date().getMilliseconds();
+
       this.SalvarCarrinho(this.carrinho);
       return;
     }

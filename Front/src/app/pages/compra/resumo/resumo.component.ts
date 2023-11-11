@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Utilitarios } from 'src/app/shared/classes/utilitarios';
@@ -8,11 +8,11 @@ import { ClienteService } from 'src/app/shared/services/cliente.service';
 import { ViaCepService } from 'src/app/shared/services/viaCep.service';
 
 @Component({
-  selector: 'app-carrinho',
-  templateUrl: './carrinho.component.html',
-  styleUrls: ['./carrinho.component.css']
+  selector: 'app-resumo',
+  templateUrl: './resumo.component.html',
+  styleUrls: ['./resumo.component.css']
 })
-export class CarrinhoComponent implements OnInit {
+export class ResumoComponent {
   constructor(private readonly carrinhoService: CarrinhoService,
     private readonly viaCepService: ViaCepService,
     private readonly clienteService: ClienteService,
@@ -67,28 +67,23 @@ export class CarrinhoComponent implements OnInit {
   }
 
   proseguir() {
-    if(!this.endereco) {
-      this.toastr.error('Informe um endereço');
-      return
+    let compras: any = localStorage.getItem('compras');
+
+    if(!compras) {
+      compras = '';
     }
 
-    if(Utilitarios.obterClienteId()) {
-      this.carrinho.endereco = this.endereco;
+    compras = JSON.parse(compras);
 
-      this.carrinhoService.SalvarCarrinho(this.carrinho);
+    compras.push(this.carrinho);
 
-      this.router.navigate(['loja/forma-pagamento'])
+    this.toastr.success('Numero do pedido: ' + this.carrinho.id, 'Pedido Realizado')
 
-      return;
-    }
+    localStorage.setItem('compras', JSON.stringify(compras));
 
-    this.carrinho.endereco = this.endereco;
+    this.carrinhoService.LimparCarrinho();
 
-    console.log(this.endereco)
-
-    this.carrinhoService.SalvarCarrinho(this.carrinho);
-
-    this.router.navigate(['loja/cadastro-cliente'])
+    this.router.navigate(['/loja/produtos']);
   }
 
   calcularTotal() {

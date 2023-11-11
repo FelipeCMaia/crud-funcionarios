@@ -20,6 +20,8 @@ import { LojaLoginComponent } from './pages/loja-login/loja-login.component';
 import { CadastroClienteComponent } from './pages/cadastro-cliente/cadastro-cliente.component';
 import { CarrinhoComponent } from './pages/compra/carrinho/carrinho.component';
 import { FormaPagamentoComponent } from './pages/compra/forma-pagamento/forma-pagamento.component';
+import { ResumoComponent } from './pages/compra/resumo/resumo.component';
+import { MinhaCompraComponent } from './pages/compra/minha-compra/minha-compra.component';
 
 
 @NgModule({
@@ -38,6 +40,8 @@ import { FormaPagamentoComponent } from './pages/compra/forma-pagamento/forma-pa
     CadastroClienteComponent,
     CarrinhoComponent,
     FormaPagamentoComponent,
+    ResumoComponent,
+    MinhaCompraComponent,
   ],
   imports: [
     BrowserModule,
