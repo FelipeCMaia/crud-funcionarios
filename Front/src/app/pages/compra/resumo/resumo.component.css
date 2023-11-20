@@ -1,0 +1,22 @@
+.img-produto {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.produto {
+  padding: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.produtos {
+  max-height: 300px;
+  overflow: auto;
+}
+
+.qtd-produto {
+  display: flex;
+  gap: 25px;
+}

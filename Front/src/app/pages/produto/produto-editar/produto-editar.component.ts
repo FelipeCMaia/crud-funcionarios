@@ -37,8 +37,6 @@ export class ProdutoEditarComponent {
     }
   }
 
-
-
   @ViewChild('fileInput')
   fileInput: ElementRef;
 
@@ -97,7 +95,8 @@ export class ProdutoEditarComponent {
         await this.produtoService.cadastrar(this.produto);
       }
 
-      await this.enviarImagem();
+      if(this.fileObj)
+        await this.enviarImagem();
 
       //this.router.navigate(['produto-listar'])
     } catch (error) {

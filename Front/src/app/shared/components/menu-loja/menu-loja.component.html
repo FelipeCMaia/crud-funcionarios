@@ -1,20 +1,31 @@
-<div class="pagina">
-  <Header>
+<div>
 
-    <img (click)="navegarDash()" class="logo" src="assets/img/logo.png" alt="">
-    <input type="search" placeholder="Encontre o brinquedo dos seus sonhos aqui!" class="buscar">
-    <img src="assets/img/carrinho.png" style="height: 35%; background-color:white; padding:5px; border-radius: 5px; cursor: pointer" routerLink="/loja/carrinho">
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <img (click)="navegarDash()" class="logo" src="assets/img/logo.png" alt="">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-    <a *ngIf="nomeCliente" class="btn" routerLink="/loja/compras">Minhas Compras</a>
+        <form class="d-flex">
+          <input type="search" placeholder="Encontre o brinquedo dos seus sonhos aqui!" class="buscar form-control">
+        </form>
 
-    <p style="color: white;" *ngIf="nomeCliente"> <span routerLink="/loja/meu-perfil"> {{nomeCliente}} </span> | <span style="cursor: pointer;" routerLink="/login" (click)="sair()">SAIR</span> </p>
+        <div class="navbar-opcoes">
+          <fa-icon style="font-size:25px;" [icon]="faCartShopping" routerLink="/loja/carrinho"></fa-icon>
 
-    <a *ngIf="!nomeCliente" class="btn" routerLink="/login">Criar Conta/Entrar</a>
+          <a *ngIf="nomeCliente" class="btn" routerLink="/loja/compras" style="background-color:#7f60e6">Minhas Compras</a>
 
-  </Header>
+          <p style="color: white;" *ngIf="nomeCliente"> <span routerLink="/loja/meu-perfil"> {{nomeCliente}} </span> | <span style="cursor: pointer;" routerLink="/login" (click)="sair()">SAIR</span> </p>
 
+          <a *ngIf="!nomeCliente" class="btn" routerLink="/login">Criar Conta/Entrar</a>
+        </div>
+
+      </div>
+    </div>
+  </nav>
   <div class="container">
     <router-outlet></router-outlet>
   </div>
-
 </div>

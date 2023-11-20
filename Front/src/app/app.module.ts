@@ -22,6 +22,11 @@ import { CarrinhoComponent } from './pages/compra/carrinho/carrinho.component';
 import { FormaPagamentoComponent } from './pages/compra/forma-pagamento/forma-pagamento.component';
 import { ResumoComponent } from './pages/compra/resumo/resumo.component';
 import { MinhaCompraComponent } from './pages/compra/minha-compra/minha-compra.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ConclusaoComponent } from './pages/compra/conclusao/conclusao.component';
+import { MinhaCompraVisualizarComponent } from './pages/compra/minha-compra-visualizar/minha-compra-visualizar.component';
+import { VendaListarComponent } from './pages/venda/venda-listar/venda-listar.component';
+import { VendaEditarComponent } from './pages/venda/venda-editar/venda-editar.component';
 
 
 @NgModule({
@@ -42,6 +47,10 @@ import { MinhaCompraComponent } from './pages/compra/minha-compra/minha-compra.c
     FormaPagamentoComponent,
     ResumoComponent,
     MinhaCompraComponent,
+    ConclusaoComponent,
+    MinhaCompraVisualizarComponent,
+    VendaListarComponent,
+    VendaEditarComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,6 +59,7 @@ import { MinhaCompraComponent } from './pages/compra/minha-compra/minha-compra.c
     FormsModule,
     ToastrModule.forRoot(),
     NgxSpinnerModule,
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

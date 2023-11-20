@@ -75,7 +75,7 @@
 
         <div class="total">
           <p style="text-align: end;">
-            Total: {{carrinho.total | currency : 'BRL'}}
+            Total: {{carrinho.valor_total | currency : 'BRL'}}
           </p>
         </div>
       </div>
@@ -98,14 +98,14 @@
         </p>
 
         <div *ngIf="endereco">
-          <input type="radio" value="20.50" name="valorFrete" [(ngModel)]="carrinho.valorFrete" [defaultChecked]="true">
-          <label for="" > - OPT 1 - R$ 20,50</label>
+          <input type="radio" value="20.50" name="valorFrete" [(ngModel)]="carrinho.valor_frete" [defaultChecked]="true">
+          <label for=""> - OPT 1 - R$ 20,50</label>
           <br>
-          <input type="radio" value="21.50" name="valorFrete" [(ngModel)]="carrinho.valorFrete">
-          <label for="" > - OPT 2 - R$ 21,50</label>
+          <input type="radio" value="21.50" name="valorFrete" [(ngModel)]="carrinho.valor_frete">
+          <label for=""> - OPT 2 - R$ 21,50</label>
           <br>
-          <input type="radio" value="22.50" name="valorFrete" [(ngModel)]="carrinho.valorFrete">
-          <label for="" > - OPT 3 - R$ 22,50</label>
+          <input type="radio" value="22.50" name="valorFrete" [(ngModel)]="carrinho.valor_frete">
+          <label for=""> - OPT 3 - R$ 22,50</label>
         </div>
 
       </div>
@@ -120,17 +120,15 @@
         <h4>Calculo do total</h4>
       </div>
       <div class="card-body">
-        Carrinho: {{carrinho.total | currency : 'BRL'}}
+        Carrinho: {{carrinho.valor_total | currency : 'BRL'}}
         <br>
-        Frete: {{carrinho.valorFrete | currency : 'BRL' }}
+        Frete: {{carrinho.valor_frete | currency : 'BRL' }}
 
         <hr>
 
-        Total: {{((+carrinho.valorFrete) + carrinho.total) | currency : 'BRL'}}
+        Total: {{((+carrinho.valor_frete) + carrinho.valor_total) | currency : 'BRL'}}
       </div>
     </div>
   </div>
 
 </div>
-
-

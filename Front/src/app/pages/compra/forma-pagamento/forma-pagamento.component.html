@@ -4,18 +4,22 @@
   </div>
 
   <div class="card-body">
-    <div>
-      <input type="radio" name="forma_pagamento" value="boleto" [(ngModel)]="carrinho.formaPagamento">
-      <p>Boleto</p>
+    <div class="d-flex justify-content-around">
+      <div class="forma-pagamento">
+        <fa-icon [icon]="faBarcode" class="formapagamento-icon"></fa-icon>
+
+        <p>Boleto</p>
+        <input type="radio" name="forma_pagamento" value="boleto" [(ngModel)]="carrinho.forma_pagamento">
+      </div>
+
+      <div class="forma-pagamento">
+        <fa-icon [icon]="faCreditCard" class="formapagamento-icon"></fa-icon>
+        <p>Cartão de Credito</p>
+        <input type="radio" name="forma_pagamento" value="cartao" [(ngModel)]="carrinho.forma_pagamento">
+      </div>
     </div>
 
-    <div>
-      <input type="radio" name="forma_pagamento" value="cartao" [(ngModel)]="carrinho.formaPagamento">
-      <p>Cartão de Credito</p>
-    </div>
-
-
-    <div *ngIf="carrinho.formaPagamento === 'cartao'">
+    <div *ngIf="carrinho.forma_pagamento === 'cartao'">
       <div class="row">
         <div class="col-lg-12">
           <label for="">Nome Completo</label>

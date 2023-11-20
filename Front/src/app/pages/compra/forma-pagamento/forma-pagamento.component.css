@@ -1,0 +1,13 @@
+.formapagamento-icon {
+  font-size: 50px;
+}
+
+.forma-pagamento {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border: 1px solid #b1b1b1;
+  padding: 10px;
+  min-width: 200px;
+  border-radius: 5px;
+}

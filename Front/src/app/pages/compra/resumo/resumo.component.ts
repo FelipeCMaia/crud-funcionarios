@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Utilitarios } from 'src/app/shared/classes/utilitarios';
 import { Produto } from 'src/app/shared/models/produto';
@@ -21,6 +21,7 @@ export class ResumoComponent {
     ) {}
 
   async ngOnInit(): Promise<void> {
+
     const id = Utilitarios.obterClienteId();
 
     if(id) {
@@ -29,6 +30,8 @@ export class ResumoComponent {
       this.enderecosCliente = data;
     }
   }
+
+  idPedido: string | null;
 
   enderecosCliente: any[] = [];
 
@@ -66,27 +69,19 @@ export class ResumoComponent {
     this.endereco.cidade = viaCep.localidade;
   }
 
-  proseguir() {
-    let compras: any = localStorage.getItem('compras');
+  async proseguir() {
+    const cliente_id = Utilitarios.obterClienteId();
 
-    if(!compras) {
-      compras = '';
-    }
+    const { data } = await this.clienteService.gravarVenda(+cliente_id!, this.carrinho);
 
-    compras = JSON.parse(compras);
+    this.toastr.success('Pedido concluído com sucesso');
 
-    compras.push(this.carrinho);
-
-    this.toastr.success('Numero do pedido: ' + this.carrinho.id, 'Pedido Realizado')
-
-    localStorage.setItem('compras', JSON.stringify(compras));
+    this.router.navigate(['loja/pedido-concluido', data.id]);
 
     this.carrinhoService.LimparCarrinho();
-
-    this.router.navigate(['/loja/produtos']);
   }
 
   calcularTotal() {
-    return this.carrinho.total + (+this.valorFrete);
+    return this.carrinho.valor_total + (+this.valorFrete);
   }
 }

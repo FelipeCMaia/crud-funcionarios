@@ -92,6 +92,6 @@ export class CarrinhoComponent implements OnInit {
   }
 
   calcularTotal() {
-    return this.carrinho.total + (+this.valorFrete);
+    return this.carrinho.valor_total + (+this.valorFrete);
   }
 }

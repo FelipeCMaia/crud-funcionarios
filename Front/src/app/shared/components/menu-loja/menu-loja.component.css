@@ -1,11 +1,13 @@
 .logo {
   width: 180px;
-  margin-bottom: 30px;
-  margin-left: 20px;
+}
+
+.navbar {
+  background-color: #364a93;
 }
 
 header {
-  background-color: #023047;
+  background-color: #364a93;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -15,22 +17,34 @@ header {
 
 .btn {
   color: #fff;
-  margin-right: 50px;
   font-size: 20px;
   font-weight: 600;
   border: none !important;
   transition: all linear 160ms;
   cursor: pointer;
   transform: scale(1.05);
-  background-color: #023047;
+  background-color: #364a93;
   color: white;
 }
 
 .buscar {
-  padding: 20px;
-  font-size: 20px;
-  align-items: center;
-  border-radius: 10px;
-  transition: all linear 160ms;
-  width: 80vh;
+  width: 350px;
+}
+
+.navbar-collapse {
+  justify-content: space-around;
+}
+
+.navbar-opcoes {
+  display: flex;
+  justify-content: space-between;
+  gap: 25px;
+}
+
+@media (max-width: 990px) {
+  .navbar-opcoes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }

@@ -40,6 +40,12 @@ export class ProdutoVisualizarComponent implements OnInit {
   }
 
   adicionarCarrinho() {
+
+
     this.carrinho.AdicionarProduto(this.produto, 1);
+
+    this.toastr.success('Produto adicionado ao carrinho', 'Sucesso');
+
+    this.router.navigate(['/loja/produtos'])
   }
 }

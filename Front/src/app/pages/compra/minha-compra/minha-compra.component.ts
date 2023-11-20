@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ClienteService } from 'src/app/shared/services/cliente.service';
 
 @Component({
   selector: 'app-minha-compra',
@@ -7,16 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MinhaCompraComponent implements OnInit {
 
+  constructor(private clienteService: ClienteService) {}
+
   compras: any = [];
 
-  ngOnInit(): void {
-    this.compras = localStorage.getItem('compras');
+  async ngOnInit(): Promise<void> {
+    const { data } = await this.clienteService.listarCompras();
 
-    this.compras = JSON.parse(this.compras);
-
-
+    this.compras = data;
   }
-
 
 
 }

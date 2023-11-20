@@ -105,6 +105,6 @@ export class CarrinhoService {
       total += p.produto.valor * p.quantidade;
     });
 
-    this.carrinho.total = total;
+    this.carrinho.valor_total = total;
   }
 }

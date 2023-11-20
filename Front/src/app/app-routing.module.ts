@@ -15,6 +15,10 @@ import { CarrinhoComponent } from './pages/compra/carrinho/carrinho.component';
 import { FormaPagamentoComponent } from './pages/compra/forma-pagamento/forma-pagamento.component';
 import { ResumoComponent } from './pages/compra/resumo/resumo.component';
 import { MinhaCompraComponent } from './pages/compra/minha-compra/minha-compra.component';
+import { ConclusaoComponent } from './pages/compra/conclusao/conclusao.component';
+import { MinhaCompraVisualizarComponent } from './pages/compra/minha-compra-visualizar/minha-compra-visualizar.component';
+import { VendaListarComponent } from './pages/venda/venda-listar/venda-listar.component';
+import { VendaEditarComponent } from './pages/venda/venda-editar/venda-editar.component';
 
 const routes: Routes = [
   {
@@ -54,6 +58,14 @@ const routes: Routes = [
     component: ProdutoVisualizarComponent,
   },
   {
+    path: 'venda-listar',
+    component: VendaListarComponent,
+  },
+  {
+    path: 'venda-editar/:id',
+    component: VendaEditarComponent,
+  },
+  {
     path: 'loja',
     component: MenuLojaComponent,
     children: [
@@ -86,8 +98,16 @@ const routes: Routes = [
         component: ResumoComponent,
       },
       {
+        path: 'info-pedido/:id',
+        component: MinhaCompraVisualizarComponent,
+      },
+      {
         path: 'forma-pagamento',
         component: FormaPagamentoComponent,
+      },
+      {
+        path: 'pedido-concluido/:id',
+        component: ConclusaoComponent,
       },
     ]
   },
