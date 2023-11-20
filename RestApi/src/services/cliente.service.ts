@@ -152,4 +152,25 @@ export class ClienteService {
 
     return { cliente }
   }
+
+  async gravarEndereco(endereco: any, cliente_id: number) {
+    return await prisma.clienteEndereco.create({
+      data: {
+        ...endereco,
+        cliente_id,
+      }
+    })
+  }
+
+  listarVendas(cliente_id: number) {
+    return prisma.venda.findMany({
+      where: {
+        cliente_id,
+      },
+      include: {
+        ClienteEndereco: true,
+        VendaItem: true,
+      }
+    })
+  }
 }

@@ -5,7 +5,7 @@
     "copy": "copyfiles dist/"
   },
   "devDependencies": {
-    "prisma": "^5.4.2",
+    "prisma": "^5.5.2",
     "ts-node-dev": "^2.0.0",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.2.2"

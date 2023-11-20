@@ -11,7 +11,7 @@
             <p>Numero do pedido: {{carrinho.id}}</p>
             <p>Endereço: {{carrinho.ClienteEndereco.logradouro}}, {{carrinho.ClienteEndereco.numero}}</p>
             <p>Valor dos produtos: {{carrinho.valor_total | currency : 'BRL'}}</p>
-            <p>Status: {{carrinho.status}}</p>
+            <p>Status: {{carrinho.status | currency : ''}}</p>
 
             <button class="btn btn-primary" [routerLink]="'/loja/info-pedido/' + carrinho.id">Ver Mais</button>
           </div>

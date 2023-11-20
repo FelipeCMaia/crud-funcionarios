@@ -39,8 +39,12 @@ produtoRoutes.post('/pesquisar', async (req, res) => {
 
 produtoRoutes.get('/listar-loja', async (req, res) => {
   const filtros = req.body;
+  try {
 
   return res.json(await produtoService.pesquisarLoja());
+  } catch (error) {
+    console.log(error)
+  }
 });
 
 produtoRoutes.get('/:id', async (req, res) => {
