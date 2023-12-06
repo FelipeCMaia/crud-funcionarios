@@ -8,10 +8,10 @@
       <div class="card-body">
         <div class="card mt-3" *ngFor="let carrinho of compras">
           <div class="card-body">
-            <p>Numero do pedido: {{carrinho.id}}</p>
-            <p>Endereço: {{carrinho.ClienteEndereco.logradouro}}, {{carrinho.ClienteEndereco.numero}}</p>
-            <p>Valor dos produtos: {{carrinho.valor_total | currency : 'BRL'}}</p>
-            <p>Status: {{carrinho.status | currency : ''}}</p>
+            <p>Numero do pedido: {{carrinho?.id}}</p>
+            <p>Endereço: {{carrinho?.ClienteEndereco?.logradouro}}, {{carrinho?.ClienteEndereco?.numero}}</p>
+            <p>Valor dos produtos: {{carrinho?.valor_total | currency : 'BRL'}}</p>
+            <p>Status: {{carrinho?.status}}</p>
 
             <button class="btn btn-primary" [routerLink]="'/loja/info-pedido/' + carrinho.id">Ver Mais</button>
           </div>

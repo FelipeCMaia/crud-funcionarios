@@ -13,7 +13,10 @@
         </form>
 
         <div class="navbar-opcoes">
-          <fa-icon style="font-size:25px;" [icon]="faCartShopping" routerLink="/loja/carrinho"></fa-icon>
+          <div class="carrinho-menu">
+            <fa-icon style="font-size:25px; color:white; cursor: pointer;" [icon]="faCartShopping" routerLink="/loja/carrinho"></fa-icon>
+
+          </div>
 
           <a *ngIf="nomeCliente" class="btn" routerLink="/loja/compras" style="background-color:#7f60e6">Minhas Compras</a>
 

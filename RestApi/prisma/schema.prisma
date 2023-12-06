@@ -73,6 +73,8 @@ model ClienteEndereco {
   complemento String?  @db.VarChar(150)
   cliente_id  Int      @db.Int
   faturamento Boolean? @db.TinyInt
+  excluido Boolean? @db.TinyInt
+  entrega Boolean? @db.TinyInt
 
   venda Venda[]
 

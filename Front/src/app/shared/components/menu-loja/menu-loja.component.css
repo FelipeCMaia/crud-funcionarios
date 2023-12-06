@@ -41,6 +41,21 @@ header {
   gap: 25px;
 }
 
+.carrinho-menu {
+  position: relative;
+  padding-right: 5px;
+  padding-top: 5px;
+}
+
+.quantidade-carrinho {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: red;
+  color: white;
+  padding: 5px;
+}
+
 @media (max-width: 990px) {
   .navbar-opcoes {
     display: flex;

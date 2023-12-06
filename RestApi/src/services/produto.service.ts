@@ -76,6 +76,10 @@ export class ProdutoService {
       },
     });
 
+    if(!produto) {
+      throw new AppError('Produto não encontrado', 404);
+    }
+
     produto?.ProdutoAnexo.forEach(pa => {
       pa.caminho = `${process.env.BASE_URL!}${pa.produto_id}/${pa.caminho}`;
     })

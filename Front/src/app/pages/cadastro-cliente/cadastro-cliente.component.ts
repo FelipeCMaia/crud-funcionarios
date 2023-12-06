@@ -24,6 +24,10 @@ export class CadastroClienteComponent implements OnInit {
 
   faturamento: any = 0;
 
+  entrega: any = 0;
+
+  excluido: any = 0;
+
   clienteId = Utilitarios.obterClienteId();
 
 
